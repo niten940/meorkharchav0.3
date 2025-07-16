@@ -1,0 +1,209 @@
+/* Recent Expenses Section */
+.recent-expenses {
+    margin-bottom: 3rem;
+}
+
+.recent-expenses h2 {
+    color: #1F2937;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.expenses-table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 1fr;
+    background: #F9FAFB;
+    padding: 1rem;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.table-body .expense-row {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr 1fr;
+    padding: 1rem;
+    border-bottom: 1px solid #F3F4F6;
+    transition: background-color 0.2s ease;
+}
+
+.table-body .expense-row:hover {
+    background: #F9FAFB;
+}
+
+.table-body .expense-row:last-child {
+    border-bottom: none;
+}
+
+.header-cell {
+    font-weight: 600;
+    color: #374151;
+}
+
+.expense-cell {
+    color: #1F2937;
+}
+
+.expense-amount {
+    font-weight: 600;
+    color: #059669;
+}
+
+/* Budget Remaining Section */
+.budget-remaining h2 {
+    color: #1F2937;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.budget-list {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.budget-item {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.budget-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.budget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.budget-department {
+    font-weight: 600;
+    color: #1F2937;
+}
+
+.budget-amounts {
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #E5E7EB;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #14B8A6, #0f9488);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.budget-remaining-text {
+    font-size: 0.85rem;
+    color: #6B7280;
+}
+
+/* Employee Dashboard */
+.employee-dashboard {
+    margin-bottom: 3rem;
+}
+
+.employee-dashboard h2 {
+    color: #1F2937;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.department-expenses {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.department-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-card {
+    background: #F9FAFB;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #E5E7EB;
+}
+
+.summary-card h3 {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.summary-card .value {
+    color: #1F2937;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .table-header,
+    .table-body .expense-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .table-header {
+        display: none;
+    }
+
+    .table-body .expense-row {
+        display: block;
+        padding: 1rem;
+        border-bottom: 2px solid #F3F4F6;
+    }
+
+    .expense-cell {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .expense-cell:before {
+        content: attr(data-label) ": ";
+        font-weight: 600;
+        color: #6B7280;
+    }
+
+    .budget-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}

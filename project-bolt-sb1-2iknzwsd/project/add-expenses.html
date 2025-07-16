@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Expenses - Mero Kharcha</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/add-expenses.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="home.html" title="Mero Kharcha - Home" style="text-decoration: none; cursor: pointer">
+                    <h2>Mero Kharcha</h2>
+  <!-- <img src="logo.png" alt="Mero Kharcha Logo"> -->
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="add-expenses.html" class="nav-link active">Add Expenses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="view-expenses.html" class="nav-link">View Expenses</a>
+                </li>
+                <li class="nav-item admin-only">
+                    <a href="budget.html" class="nav-link">Budget</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report.html" class="nav-link">Report</a>
+                </li>
+                <li class="nav-item">
+                    <div class="user-info">
+                        <span id="userWelcome"></span>
+                        <button onclick="logout()" class="logout-btn">Logout</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-wrapper">
+            <h1>Add Expenses</h1>
+            
+            <div class="expense-form-container">
+                <form id="expenseForm" class="expense-form">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Office Supplies">Office Supplies</option>
+                            <option value="Business Lunch">Business Lunch</option>
+                            <option value="Travel Expenses">Travel Expenses</option>
+                            <option value="Client Dinner">Client Dinner</option>
+                            <option value="Food Catering">Food Catering</option>
+                            <option value="Accommodation">Accommodation</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Equipment">Equipment</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (Rs.)</label>
+                        <input type="number" id="amount" name="amount" placeholder="0.00" min="0" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group admin-only">
+                        <label for="department">Department</label>
+                        <select id="department" name="department" required>
+                            <option value="">Select Department</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Human Resource (HR)">Human Resource (HR)</option>
+                            <option value="Information Technology (IT)">Information Technology (IT)</option>
+                            <option value="Operations">Operations</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group admin-only">
+                        <label for="employeeName">Employee Name</label>
+                        <input type="text" id="employeeName" name="employeeName" placeholder="Enter employee name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" name="notes" placeholder="Add a description..." rows="4"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="clearForm()">Clear</button>
+                        <button type="submit" class="btn-primary">Add Expense</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/auth-manager.js"></script>
+    <script src="scripts/data-manager.js"></script>
+    <script src="scripts/add-expenses.js"></script>
+</body>
+</html>

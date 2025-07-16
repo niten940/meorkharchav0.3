@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Mero Kharcha</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/report.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-lightness/jquery-ui.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+               <a href="home.html" title="Mero Kharcha - Home" style="text-decoration: none; cursor: pointer">
+                    <h2>Mero Kharcha</h2>
+  <!-- <img src="logo.png" alt="Mero Kharcha Logo"> -->
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="add-expenses.html" class="nav-link">Add Expenses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="view-expenses.html" class="nav-link">View Expenses</a>
+                </li>
+                <li class="nav-item admin-only">
+                    <a href="budget.html" class="nav-link">Budget</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report.html" class="nav-link active">Report</a>
+                </li>
+                <li class="nav-item">
+                    <div class="user-info">
+                        <span id="userWelcome"></span>
+                        <button onclick="logout()" class="logout-btn">Logout</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-wrapper">
+            <h1>Reports</h1>
+            
+            <!-- Automatic Chart Slider -->
+            <section class="report-section">
+                <h2>Visual Analytics Dashboard</h2>
+                <div class="chart-slider-container">
+                    <div class="slider-navigation">
+                        <button class="slider-btn prev-btn" onclick="previousChart()">&lt;</button>
+                        <div class="chart-indicators">
+                            <span class="indicator active" data-chart="0"></span>
+                            <span class="indicator" data-chart="1"></span>
+                            <span class="indicator" data-chart="2"></span>
+                        </div>
+                        <button class="slider-btn next-btn" onclick="nextChart()">&gt;</button>
+                    </div>
+                    
+                    <div class="chart-slides">
+                        <!-- Pie Chart Slide -->
+                        <div class="chart-slide active" id="pieChartSlide">
+                            <div class="chart-header">
+                                <h3>Department Expense Distribution</h3>
+                                <p>Pie Chart View</p>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- Bar Chart Slide -->
+                        <div class="chart-slide" id="barChartSlide">
+                            <div class="chart-header">
+                                <h3>Monthly Department Comparison</h3>
+                                <p>Bar Chart View</p>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="barChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- Line Chart Slide -->
+                        <div class="chart-slide" id="lineChartSlide">
+                            <div class="chart-header">
+                                <h3>Expense Trends Over Time</h3>
+                                <p>Line Chart View</p>
+                            </div>
+                            <div class="chart-wrapper">
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="auto-play-controls">
+                        <button class="control-btn" onclick="toggleAutoPlay()" id="autoPlayBtn">
+                            <span id="playIcon">⏸️</span> Auto Play
+                        </button>
+                        <span class="timer-display" id="timerDisplay">5s</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Monthly Expenses by Department -->
+            <section class="report-section">
+                <h2>Monthly Expenses by Department</h2>
+                <div class="slider-container">
+                    <div id="monthSlider" class="month-slider"></div>
+                    <div class="slider-labels">
+                        <span>Jan</span>
+                        <span>Feb</span>
+                        <span>Mar</span>
+                        <span>Apr</span>
+                        <span>May</span>
+                        <span>Jun</span>
+                        <span>Jul</span>
+                        <span>Aug</span>
+                        <span>Sep</span>
+                        <span>Oct</span>
+                        <span>Nov</span>
+                        <span>Dec</span>
+                    </div>
+                </div>
+                <div id="monthlyChart" class="chart-container">
+                    <!-- Monthly chart will be populated here -->
+                </div>
+            </section>
+
+            <!-- Yearly Expenses Overview -->
+            <section class="report-section">
+                <h2>Yearly Expenses Overview</h2>
+                <div class="year-slider-container">
+                    <button id="prevYear" class="year-nav">&lt;</button>
+                    <div id="currentYear" class="current-year">2024</div>
+                    <button id="nextYear" class="year-nav">&gt;</button>
+                </div>
+                <div id="yearlyChart" class="chart-container">
+                    <!-- Yearly chart will be populated here -->
+                </div>
+            </section>
+
+            <!-- Day-to-Day Expenses (Last 7 Days) -->
+            <section class="report-section">
+                <h2>Day-to-Day Expenses (Last 7 Days)</h2>
+                <div id="dailyChart" class="chart-container">
+                    <!-- Daily chart will be populated here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="scripts/auth-manager.js"></script>
+    <script src="scripts/data-manager.js"></script>
+    <script src="scripts/report.js"></script>
+</body>
+</html>

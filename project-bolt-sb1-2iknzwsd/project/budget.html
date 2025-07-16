@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget - Mero Kharcha</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/budget.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+              <a href="home.html" title="Mero Kharcha - Home" style="text-decoration: none; cursor: pointer">
+                    <h2>Mero Kharcha</h2>
+  <!-- <img src="logo.png" alt="Mero Kharcha Logo"> -->
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="add-expenses.html" class="nav-link">Add Expenses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="view-expenses.html" class="nav-link">View Expenses</a>
+                </li>
+                <li class="nav-item">
+                    <a href="budget.html" class="nav-link active">Budget</a>
+                </li>
+                <li class="nav-item">
+                    <a href="report.html" class="nav-link">Report</a>
+                </li>
+                <li class="nav-item">
+                    <div class="user-info">
+                        <span id="userWelcome"></span>
+                        <button onclick="logout()" class="logout-btn">Logout</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-wrapper">
+            <h1>Budget Management</h1>
+            
+            <div class="budget-sections">
+                <!-- Set Budget Section -->
+                <section class="budget-section">
+                    <h2>Set Department Budget</h2>
+                    <div class="budget-form-container">
+                        <form id="budgetForm" class="budget-form">
+                            <div class="form-group">
+                                <label for="budgetDepartment">Department</label>
+                                <select id="budgetDepartment" name="department" required>
+                                    <option value="">Select Department</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Human Resource (HR)">Human Resource (HR)</option>
+                                    <option value="Information Technology (IT)">Information Technology (IT)</option>
+                                    <option value="Operations">Operations</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="budgetAmount">Budget Amount (Rs.)</label>
+                                <input type="number" id="budgetAmount" name="amount" placeholder="0.00" min="0" step="0.01" required>
+                            </div>
+                            <button type="submit" class="btn-primary">Set Budget</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Current Budget Status -->
+                <section class="budget-section">
+                    <h2>Current Budget Status</h2>
+                    <div id="budgetStatusList" class="budget-status-list">
+                        <!-- Budget status will be populated here -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts/auth-manager.js"></script>
+    <script src="scripts/data-manager.js"></script>
+    <script src="scripts/budget.js"></script>
+</body>
+</html>
