@@ -123,3 +123,85 @@ function loadEmployeeDashboard() {
         </div>
     `;
 }
+
+
+
+
+// Slider functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.slides-container');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const dots = document.querySelectorAll('.slider-dot');
+    
+    let currentIndex = 0;
+    let slideInterval;
+    const slideCount = slides.length;
+    
+    // Set up the slider
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    // Next slide
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlider();
+        resetInterval();
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlider();
+        resetInterval();
+    }
+    
+    // Button events
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider();
+            resetInterval();
+        });
+    });
+    
+    // Auto slide
+    function startInterval() {
+        slideInterval = setInterval(nextSlide, 4000); // Change slide every 5 seconds
+    }
+    
+    function resetInterval() {
+        clearInterval(slideInterval);
+        startInterval();
+    }
+    
+    startInterval();
+    
+    // Pause on hover
+    const sliderContainer = document.querySelector('.features-slider');
+    sliderContainer.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+    
+    sliderContainer.addEventListener('mouseleave', startInterval);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+        }
+    });
+});
